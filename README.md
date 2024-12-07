@@ -27,7 +27,7 @@
 Для лучшего понимания работы плагина посмотрите видеоурок [на YouTube](https://www.youtube.com/watch?v=RM_MeVCtCq8)
 
 ## Контакты
-- **Авторы**: Neproger, syroezhkin
+- **Авторы**: Neproger, Vladimir Syroezhkin
 - **Контакты**: kazmazdev@gmail.com
 
 ## Лицензия
