@@ -26,7 +26,7 @@
 [Видеоурок по плагину на YouTube](https://www.youtube.com/watch?v=RM_MeVCtCq8)
 
 ## Контакты
-- **Автор**: Neproger
+- **Авторы**: Neproger, syroezhkin
 - **Контакты**: kazmazdev@gmail.com
 
 ## Лицензия
