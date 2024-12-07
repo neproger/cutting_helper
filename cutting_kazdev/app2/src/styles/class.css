@@ -1,0 +1,121 @@
+.flex_row {
+    display: flex;
+}
+
+.space_between {
+    justify-content: space-between;
+}
+
+.margin_auto {
+    margin: auto;
+}
+
+.card {
+    width: auto;
+    padding: 2px;
+    background-color: var(--color_bg3);
+    box-shadow: 0px 0px 2px black;
+    border-radius: 2px;
+    font: inherit;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.link:hover {
+    color: var(--color_1);
+}
+
+
+.loading {
+    cursor: wait;
+    animation: pulse 0.5s infinite;
+}
+
+.button.loading {
+    background-color: var(--color_bg3);
+    cursor: wait;
+    animation: pulse 0.5s infinite;
+}
+
+.spin {
+    top:2px;
+    left: -20px;
+    position: absolute;
+    display: inline-block;
+    animation: spin 2s linear infinite;
+    /* Здесь 2s - время одного оборота, linear - тип анимации, infinite - бесконечное вращение */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.pointer-events {
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.active {
+    color: var(--color_1);
+}
+
+.grid_2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1px;
+    position: relative;
+    padding: 3px 6px;
+    background-color: var(--color_bg2);
+    box-shadow: 0px 0px 2px black;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: var(--color_1);
+}
+
+.flex_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}

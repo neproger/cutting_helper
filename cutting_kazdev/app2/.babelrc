@@ -1,0 +1,16 @@
+{
+    "plugins": [
+        "@babel/syntax-dynamic-import"
+    ],
+    "presets": [
+        // Первый пресет с опциями
+        [
+            "@babel/preset-env",
+            {
+                "modules": false // Отключить преобразование модулей
+            }
+        ],
+        // Второй пресет для React
+        "@babel/preset-react"
+    ]
+}

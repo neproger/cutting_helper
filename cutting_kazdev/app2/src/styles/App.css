@@ -1,0 +1,483 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-Regular.woff") format("woff"),
+        /* WOFF */
+        url("../fonts/Montserrat-Regular.woff2") format("woff2");
+    /* WOFF2 */
+    font-weight: normal;
+    font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color_bg1: #383838;
+    --color_bg2: #2b2b2b;
+    --color_bg3: #242424;
+    --color_bg4: #1a1a1a;
+    --color_0: #d4d4d4;
+    --color_1: #85f52a;
+    --color_2: #661919;
+    --color_3: #c2b1b0;
+    --gradient: linear-gradient(to right, #252020, #b9b9b9);
+}
+
+[dark] {
+    --color_bg1: #383838;
+    --color_bg2: #2b2b2b;
+    --color_bg3: #242424;
+    --color_bg4: #1a1a1a;
+    --color_0: #d4d4d4;
+    --color_1: #85f52a;
+    --color_2: #661919;
+    --color_3: #c2b1b0;
+    --gradient: linear-gradient(to right, #252020, #b9b9b9);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+    user-select: none;
+    color: var(--color_0);
+
+    -webkit-font-smoothing: antialiased;
+    /* Chrome, Safari */
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color_bg4);
+    margin: 0;
+}
+
+#root {
+    height: 100%;
+}
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    overflow: hidden;
+}
+
+header,
+footer {
+    display: flex;
+    height: 32px;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 0px 0px 2px black;
+    padding: 5px;
+    background-color: var(--color_bg3);
+}
+
+header {
+    margin-bottom: 2px;
+}
+
+footer {
+    margin-top: 2px;
+    justify-content: space-between;
+}
+
+content {
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-overlay {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.226);
+    /* Полупрозрачный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    position: relative;
+    /* background-color: white; */
+    background-color: var(--color_bg3);
+    box-shadow: 0px 0px 2px black;
+    border-radius: 6px;
+
+    font: inherit;
+    width: 60vw;
+    max-width: 300px;
+    padding: 18px;
+}
+
+.modal input {
+    width: 100px;
+    height: 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid var(--color_bg1);
+    padding-left: 5px;
+    text-align: right;
+}
+
+.modal-content {
+    display: grid;
+    /* Устанавливаем контейнеру режим отображения grid */
+    grid-template-columns: 1fr;
+    /* Один столбец */
+    gap: 8px;
+    /* Устанавливаем промежуток между элементами (5 пикселей) */
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    border: none;
+    cursor: pointer;
+    font-size: 8px;
+}
+
+.modal h2 {
+    margin-bottom: 10px;
+}
+
+.grid_row_style {
+    align-items: end;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.map_container {
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 1100px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.material_description {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.svg_card {
+    margin-top: 6px;
+}
+
+.cut_map {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.svg_box {
+    margin-top: 4px;
+    padding: 4px;
+}
+
+.svg_description {
+    text-align: right;
+}
+
+.svg_content {
+    display: flex;
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.BLOCK.active {
+    fill: var(--color_1);
+}
+
+.BLOCK {
+    stroke: none;
+    fill: #D8D8D8;
+}
+
+/* .TOP_LEFT_TEXT{
+    font-size: 60px;
+}
+
+.TOP_RIGHT_TEXT{
+    font-size: 40px;
+}
+
+.BOTTOM_LEFT_TEXT{
+    font-size: 40px;
+}
+
+.BOTTOM_RIGHT_TEXT{
+    font-size: 60px;
+} 
+
+.ROOT_NODE {
+}*/
+
+.PACKER {
+    /* stroke: var(--color_1); */
+    stroke-width: 2;
+}
+
+.input_grinding {
+    margin: 0;
+    width: 33px;
+    height: 16px;
+}
+
+/* Скрыть стрелки в браузерах на основе WebKit */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.search {
+    width: 33px;
+    height: 16px;
+    color: var(--color_1);
+}
+
+.id_column {
+    max-width: 4em;
+}
+
+.remove_column {
+    vertical-align: middle;
+}
+
+.material_column {
+    vertical-align: middle;
+}
+
+
+.id {
+    font-size: 1.3em;
+    height: 100%;
+}
+
+.count {
+    font-size: 1.5em;
+    height: 100%;
+    padding-bottom: 0.5em;
+}
+
+.input_discription {
+    height: 25px;
+}
+
+.input_layer_discription {
+    height: 32px;
+}
+
+.table_options {
+    display: flex;
+    align-items: center;
+}
+
+.show_table {
+    display: flex;
+    align-items: center;
+}
+
+.length {
+    font-size: 1.7em;
+    width: 100%;
+}
+
+.width {
+    font-size: 1.7em;
+    width: 100%;
+}
+
+.sort_parts::after {
+    content: "сортировать";
+}
+
+.max-min::after {
+    content: "сортировать ▲";
+}
+
+.min-max:after {
+    content: "сортировать ▼";
+}
+
+table {
+
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    margin-top: 2px;
+    margin: auto;
+    max-width: 700px;
+    width: 100%;
+}
+
+tr>th,
+tr>td,
+caption {
+    padding: 1px;
+    max-height: 200px;
+    background-color: var(--color_bg3);
+    border-radius: 2px;
+    text-align: center;
+    vertical-align: bottom;
+    font-weight: normal;
+    height: 100%;
+    min-width: 26px;
+
+}
+
+caption {
+    font-size: 12px;
+    margin-right: 6px;
+    margin-left: 6px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.caption {
+    width: 100%;
+    padding: 0.3em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.materials_table tr>td{
+    vertical-align: middle;
+    align-items: flex-start;
+}
+
+/* ///////////////////////////////////////// */
+
+.toggle {
+    --width: 20px;
+    --height: 9px;
+    --offset: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 8px;
+    cursor: pointer;
+    padding: 1px;
+}
+
+.toggle__input {
+    display: none;
+}
+
+.toggle__fill {
+    margin: 2px;
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--width);
+    background-color: var(--color_bg3);
+    box-shadow: 0px 0px 2px black inset;
+    
+    transition: background-color 0.2s ease-in-out;
+}
+
+.toggle__fill::before {
+    box-shadow: 0px 0px 5px black;
+    content: " ";
+    position: absolute;
+    top: var(--offset);
+    left: var(--offset);
+    width: calc(var(--height) - 2 * var(--offset));
+    height: calc(var(--height) - 2 * var(--offset));
+    background-color: var(--color_bg1);
+    border-radius: 50%;
+}
+
+.toggle__input:checked~.toggle__fill {
+    background-color: var(--color_bg1);
+}
+
+.toggle__input:checked~.toggle__fill::before {
+    left: calc(var(--width) - var(--height) + var(--offset));
+    background-color: var(--color_0);
+}
+
+input, textarea {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9em;
+    color: var(--color_0);
+    background: var(--color_bg3);
+    border: none;
+}
+
+select {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9em;
+    overflow: visible;
+    color: var(--color_0);
+    text-overflow: ellipsis;
+    width: 100%;
+    height: auto;
+    background: var(--color_bg3);
+    padding: 1px;
+    cursor: pointer;
+    border: none;
+}
+
+select:hover {
+    color: var(--color_1);
+    border: none;
+}
+
+select:active {
+    color: var(--color_0);
+}
+
+/******************************/
+::-webkit-scrollbar {
+    width: 6px;
+    background: var(--color_bg);
+}
+
+/* Дорожка */
+::-webkit-scrollbar-track {
+    background: var(--color_bg);
+}
+
+/* Ручка */
+::-webkit-scrollbar-thumb {
+    background: var(--color_0);
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px black;
+    cursor: pointer;
+}
+
+/* Ручка на наведении */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color_bg1);
+}
