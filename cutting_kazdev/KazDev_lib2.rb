@@ -17,16 +17,13 @@ module KazDev
             model.layers.each do |layer|
                 obj = {
                     label: layer.name,
-                    id: layer.persistent_id,
-                    # Добавьте другие свойства слоя, если необходимо
+                    id: layer.persistent_id
                 }
             
                 if layer.attribute_dictionaries && layer.attribute_dictionaries["KazDev"]
                     attributes = layer.attribute_dictionaries["KazDev"]
-                    # Переносим атрибуты из словаря в объект
                     attributes.each do |key, value|
                         obj[key.to_s] = value
-                        
                     end
                 end
 
@@ -196,7 +193,6 @@ module KazDev
 
         def get_entity_dimensions(entity)
             bounding_box = entity.bounds
-            
             # Получаем размеры по осям X, Y и Z
             size_x = bounding_box.width
             size_y = bounding_box.height
@@ -212,7 +208,7 @@ module KazDev
         def draw_rectangle( y, x, height, width, id, rotated)
             model = Sketchup.active_model
             entities = model.active_entities
-        
+            
             # Создаем точки для прямоугольника
             pt1 = Geom::Point3d.new(y.mm, x.mm, 0)
             pt2 = Geom::Point3d.new(y.mm, (x + width).mm, 0)
