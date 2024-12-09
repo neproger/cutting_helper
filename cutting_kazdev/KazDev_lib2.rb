@@ -269,11 +269,13 @@ module KazDev
                 # Дополнительные действия, если Y является минимальным
             when dimensions[:size_z]
                 puts "Минимальное измерение: Z (#{dimensions[:size_z]})"
-                # Дополнительные действия, если Z является минимальным
+                rotation = Geom::Transformation.rotation(ORIGIN, Z_AXIS, 90.degrees)
+                new_instance.transform!(rotation)
             else
                 puts "Не удалось определить минимальное измерение"
             end
 
+            dimensions = get_entity_dimensions(new_instance)
             instWidth = dimensions[:size_x]
             instHeight = dimensions[:size_y]
 
