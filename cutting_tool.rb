@@ -7,11 +7,11 @@ module KazDev
             def initialize
                 plugins_directory = File.dirname(__FILE__)
                 cutting_directory = File.join(plugins_directory, 'cutting_kazdev')
-                @cursor_path = File.join(cutting_directory, "icons/cutting_tools_cursor.png")
+                @cursor_path = File.join(cutting_directory, "icons/cutting_tools_cursor_32x32.svg")
                 @cursor_id = nil
                 @side_points = {}
                 if File.exist?(@cursor_path)
-                    @cursor_id = UI.create_cursor(@cursor_path, 42, 42) # 16, 16 — это координаты точки "нажатия" курсора
+                    @cursor_id = UI.create_cursor(@cursor_path, 16, 16) # 16, 16 — это координаты точки "нажатия" курсора
                 else
                     puts "Файл курсора не найден: #{@cursor_path}"
                 end
