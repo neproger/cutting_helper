@@ -42,19 +42,30 @@ export const prepareSheet = (sheet, offset) => {
 };
 // Функция для подготовки входных деталей
 export const prepareParts = (parts, material, layers) => {
+    const userSettings = window.userSettings;
     // console.log('prepareParts', parts, material);
     const materialParts = parts.flatMap((stack, index) => {
         const layer = layers.find(layer => layer.id === stack.part.layer_id);
-        return stack.ids.map(id => ({
-            ...stack.part,
-            id,
-            index: index + 1,
-            // Добавляем шлифовку к ширине и высоте детали
-            width: stack.part.width + (stack.part.left_thick_grinding || layer?.left_thick_grinding || 0),
-            height: stack.part.height + (stack.part.top_thick_grinding || layer?.top_thick_grinding || 0),
-            left_thick_grinding: stack.part.left_thick_grinding || layer?.left_thick_grinding || 0,
-            top_thick_grinding: stack.part.top_thick_grinding || layer?.top_thick_grinding || 0,
-        }))
+        return stack.ids.map(id => {
+            let width = stack.part.width + (stack.part.left_thick_grinding || layer?.left_thick_grinding || 0);
+            let height = stack.part.height + (stack.part.top_thick_grinding || layer?.top_thick_grinding || 0);
+            if (userSettings.typeCut) {
+                height -= stack.part.left_name ? userSettings.tapeDepth : 0;
+                height -= stack.part.right_name ? userSettings.tapeDepth : 0;
+                width -= stack.part.top_name ? userSettings.tapeDepth : 0;
+                width -= stack.part.bottom_name ? userSettings.tapeDepth : 0;
+            }
+            return {
+                ...stack.part,
+                id,
+                index: index + 1,
+                // Добавляем шлифовку к ширине и высоте детали
+                width: width,
+                height: height,
+                left_thick_grinding: stack.part.left_thick_grinding || layer?.left_thick_grinding || 0,
+                top_thick_grinding: stack.part.top_thick_grinding || layer?.top_thick_grinding || 0,
+            }
+        })
     });
     
     return materialParts.map(newPart => {
