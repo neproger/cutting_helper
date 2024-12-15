@@ -317,12 +317,12 @@ function App() {
                         <div className="toggle__fill"></div>{newSettings.typeCut ? "вычитается" : "не вычитается"}
                     </label>
                 </div>
-                <div className="grid_row_style">
+                {/* <div className="grid_row_style">
                     <span>Тема:</span>
                     <label className="toggle">
                         <div onClick={toggleTheme} className="toggle__fill"></div>{newSettings.typeCut ? "светлая" : "темная"}
                     </label>
-                </div>
+                </div> */}
                 <div className="button" onClick={handleSave}>Сохранить</div>
             </Modal>
             <header onClick={onClick}>
